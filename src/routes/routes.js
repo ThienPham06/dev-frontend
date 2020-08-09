@@ -1,5 +1,5 @@
-import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
+import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
@@ -9,17 +9,30 @@ import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 import Login from "@/pages/Login.vue";
+import Register from "@/pages/Register.vue";
+import Router from 'vue-router';
+import Vue from "vue";
+
+Vue.use(Router);
 
 const routes = [
-  
+
       {
         path: "/",
         name: "Login",
         component: Login
       },
       {
-        path: "/dashboard",
-        name: "Dashboard",
+        path: "/register",
+        name: "Register",
+        component: Register
+      },
+      {
+        path: "/layout",
+        name: "Layout",
+        meta: {
+          requiresAuth: true
+        },
         component: DashboardLayout,
         children:[
           {
@@ -70,3 +83,4 @@ const routes = [
 ];
 
 export default routes;
+

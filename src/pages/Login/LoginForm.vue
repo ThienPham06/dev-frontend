@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form novalidate class="md-layout" @submit.prevent="validateUser">
+    <form novalidate class="md-layout" @submit.prevent="login">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
           <div class="md-title">Login</div>
@@ -53,7 +53,7 @@
             >Login</md-button
           >
         </md-card-actions>
-        <p><a href="">Or sign-up a new account instead...</a></p>
+        <router-link to="/register">Or sign up a new account...</router-link>
       </md-card>
       <!-- <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar> -->
     </form>
@@ -107,13 +107,20 @@ export default {
       this.form.userName = null;
       this.form.passWord = null;
     },
-    validateUser () {
-        this.$v.$touch()
+    login: function(){
+      this.$v.$touch()
 
-        if (!this.$v.$invalid) {
-          this.saveUser()
-        }
+      if (!this.$v.$invalid) {
+        let username = this.form.userName
+        let password = this.form.passWord
+        this.$store.dispatch('login', {username, password})
+        .then(() => this.$router.push('/layout'))
+        .catch(err => {
+          console.log(err);
+          console.log("Unauth => try again!")
+          })
       }
+    }
   },
 };
 </script>

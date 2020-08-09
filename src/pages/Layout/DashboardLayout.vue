@@ -7,10 +7,12 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/dashboard">
+      
+      <router-link to="/dashboard">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
-      </sidebar-link>
+      </router-link>
+
       <sidebar-link to="/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>

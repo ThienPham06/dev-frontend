@@ -17,6 +17,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App";
+import store from './store';
 
 // router setup
 import routes from "./routes/routes";
@@ -37,8 +38,21 @@ import vueMaterial from "vue-material";
 
 // configure router
 const router = new VueRouter({
+  mode:"history",
   routes, // short for routes: routes
   linkExactActiveClass: "nav-item active"
+});
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)){
+    if(store.getters.isLoggedIn){
+      next()
+      return
+    }
+    next('/')
+  }else{
+    next()
+  }
 });
 
 Vue.prototype.$Chartist = Chartist;
@@ -53,6 +67,7 @@ Vue.use(HttpCommon);
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
+  store,
   render: h => h(App),
   router,
   data: {

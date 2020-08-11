@@ -1,7 +1,7 @@
 import axios from "axios";
 import Vue from 'vue'
 
-const devInstance = "http://localhost:4000";
+const devInstance = "http://localhost:4000/";
 //const productionInstance = createInstance("http://localhost:8080/"); // will change later
 
 let axiosInstance = axios.create({
@@ -9,10 +9,10 @@ let axiosInstance = axios.create({
     timeout:100000,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + localStorage.token,
+      'Authorization': `Bearer ${localStorage.token}`,
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
-      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT"
+      'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT'
     }
 });
 

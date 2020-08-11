@@ -72,14 +72,16 @@ import {
 export default {
   name: "LoginForm",
   mixins: [validationMixin],
-  data: () => ({
-    form: {
-      userName: null,
-      passWord: null,
-    },
-    logged: false,
-    sending: false,
-  }),
+  data () {
+    return {
+      form: {
+        userName: '',
+        passWord: '',
+      },
+      logged: false,
+      sending: false
+    }
+  },
   validations: {
     form: {
       userName: {
@@ -107,18 +109,18 @@ export default {
       this.form.userName = null;
       this.form.passWord = null;
     },
-    login: function(){
+    login: function() {
       this.$v.$touch()
 
       if (!this.$v.$invalid) {
-        let username = this.form.userName
-        let password = this.form.passWord
-        this.$store.dispatch('login', {username, password})
-        .then(() => this.$router.push('/layout'))
-        .catch(err => {
-          console.log(err);
-          console.log("Unauth => try again!")
-          })
+        let x = this.form.userName;
+        let y = this.form.passWord;
+
+        this.$store.dispatch('login', {username:x, password: y})
+          .then(() => this.$router.push('/layout'))
+          .catch(err => {
+            console.log(err)
+        })
       }
     }
   },

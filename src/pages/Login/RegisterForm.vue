@@ -69,7 +69,7 @@
               type="password"
               name="pass-word"
               id="pass-word"
-              v-model="form.Password"
+              v-model="form.passWord"
         
             />
             <span class="md-error" v-if="!$v.form.passWord.required"
@@ -89,14 +89,14 @@
               v-model="form.rePassword"
          
             />
-            <!-- <span class="md-error" v-if="$v.form.rePassword.required"
+            <span class="md-error" v-if="!$v.form.rePassword.required"
               >Re-enter password is required!</span
             >
             <span
               class="md-error"
               v-else-if="!$v.form.rePassword.sameAsPassword"
               >Passwords must match!</span
-            > -->
+            >
           </md-field>
         </md-card-content>
 
@@ -140,6 +140,7 @@ export default {
     },      
     isAdmin: null,
     sending: false,
+    isSigned: false
   }),
   validations: {
     form: {
@@ -156,11 +157,11 @@ export default {
         minlength: minLength(10)
       },
       passWord: {
-        
+        required,
         minlength: minLength(6),
       },
       rePassword: {
-      
+        required,
         sameAsPassword: sameAs("passWord"),
       },
     },
@@ -192,10 +193,14 @@ export default {
           fullname: this.form.fullName,
           email: this.form.email,
           password: this.form.passWord,
-          // isadmin: this.isAdmin
+          isadmin: this.isAdmin
         };
         this.$store.dispatch('register', data)
-          .then(() => this.$router.push('/'))
+          .then(() => {
+            //this.$router.push('/')
+            this.isSigned = !this.isSigned
+            this.$emit('signedSuccess', this.isSigned)
+          })
           .catch(err => console.log(err))
       }
     },

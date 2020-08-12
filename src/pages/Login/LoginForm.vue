@@ -7,6 +7,9 @@
         </md-card-header>
 
         <md-card-content>
+            <span class="md-error" v-if="status === '401'"
+              >Username or password is not correct!</span
+            >
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('userName')">
@@ -62,6 +65,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
+import { mapState } from "vuex";
 import {
   required,
   password,
@@ -72,15 +76,15 @@ import {
 export default {
   name: "LoginForm",
   mixins: [validationMixin],
-  data () {
+  data() {
     return {
       form: {
-        userName: '',
-        passWord: '',
+        userName: "",
+        passWord: "",
       },
       logged: false,
-      sending: false
-    }
+      sending: false,
+    };
   },
   validations: {
     form: {
@@ -93,6 +97,17 @@ export default {
         minlength: minLength(6),
       },
     },
+  },
+  computed: mapState(["status"]),
+  created(){
+    this.unwatch = this.$store.watch((state, getters) => getters.status,
+    (newValue, oldValue) => {
+      console.log(`Updating from ${oldValue} to ${newValue}`);
+    })
+  }
+  ,
+  beforeDestroy(){
+    this.unwatch();
   },
   methods: {
     getValidationClass(fieldName) {
@@ -110,19 +125,22 @@ export default {
       this.form.passWord = null;
     },
     login: function() {
-      this.$v.$touch()
+      this.$v.$touch();
 
       if (!this.$v.$invalid) {
         let x = this.form.userName;
         let y = this.form.passWord;
 
-        this.$store.dispatch('login', {username:x, password: y})
-          .then(() => this.$router.push('/layout'))
-          .catch(err => {
-            console.log(err)
-        })
+        this.$store
+          .dispatch("login", { username: x, password: y })
+          .then(() => {
+            this.$router.push("/layout/dashboard");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
-    }
+    },
   },
 };
 </script>
@@ -134,10 +152,13 @@ export default {
   left: 0;
 }
 .md-card {
-    position: fixed;
+  position: fixed;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+}
+.md-error {
+  color: red;
 }
 </style>

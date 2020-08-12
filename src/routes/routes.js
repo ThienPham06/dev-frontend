@@ -30,9 +30,9 @@ const routes = [
       {
         path: "/layout",
         name: "Layout",
-        meta: {
-          requiresAuth: true
-        },
+        // meta: {
+        //   requiresAuth: true
+        // },
         component: DashboardLayout,
         children:[
           {

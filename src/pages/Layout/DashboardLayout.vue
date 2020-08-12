@@ -8,36 +8,35 @@
     >
       <mobile-menu slot="content"></mobile-menu>
       
-      <router-link to="/dashboard">
+      <sidebar-link to="/layout/dashboard">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
-      </router-link>
-
-      <sidebar-link to="/user">
+      </sidebar-link>
+      <sidebar-link to="/layout/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <sidebar-link to="/layout/table">
         <md-icon>content_paste</md-icon>
         <p>Table list</p>
       </sidebar-link>
-      <sidebar-link to="/typography">
+      <sidebar-link to="/layout/typography">
         <md-icon>library_books</md-icon>
         <p>Typography</p>
       </sidebar-link>
-      <sidebar-link to="/icons">
+      <sidebar-link to="/layout/icons">
         <md-icon>bubble_chart</md-icon>
         <p>Icons</p>
       </sidebar-link>
-      <sidebar-link to="/maps">
+      <sidebar-link to="/layout/maps">
         <md-icon>location_on</md-icon>
         <p>Maps</p>
       </sidebar-link>
-      <sidebar-link to="/notifications">
+      <sidebar-link to="/layout/notifications">
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/upgrade" class="active-pro">
+      <sidebar-link to="/layout/upgrade" class="active-pro">
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
       </sidebar-link>

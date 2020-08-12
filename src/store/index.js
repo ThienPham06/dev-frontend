@@ -10,7 +10,8 @@ export default new Vuex.Store({
     state: {
         status: '',
         token: localStorage.getItem('token') || '',
-        user : {}
+        user : {},
+        401: false
     },
 
     mutations:{
@@ -28,49 +29,54 @@ export default new Vuex.Store({
         logout (state) {
             state.status = ''
             state.token = ''
+        },
+        unauth (state) {
+            state.status = '401',
+            state.token = ''
         }
     },
 
     actions:{
-        login({commit}, user) {
-            commit('auth_request');
-            
-            axiosInstance.post("/users/signIn",  user)
-                    .then(resp => {
-                        const resData = resp.data;
-                        const token = resData.token;
-                        const user = resData.user;
-                        localStorage.setItem('token', token);
-                        axiosInstance.defaults.headers.common['Authorization'] = token;
-                        commit('auth_success', token, user);
-                    })
-                    .catch(err => {
-                        commit('auth_error');
-                        localStorage.removeItem('token');     
-                        console.log(err);             
-                    }) 
+        login({commit}, user) {            
+            // axiosInstance.post("/users/signIn",  user)
+            //         .then(resp => {
+            //             commit('auth_request')
+            //             let token = resp.data.token
+            //             let user = resp.data.user
+            //             localStorage.setItem('token', token)
+            //             axiosInstance.defaults.headers.common['Authorization'] = token
+            //             commit('auth_success', token, user)
+            //         })
+            //         .catch(err => {
+            //             commit('auth_error')
+            //             localStorage.removeItem('token')
+            //             console.log(err) 
+            //         }) 
             
             
             
 
-            // return new Promise((resolve, reject) => {
-            //     commit('auth_request');
-            //     axiosInstance.post("/users/signIn",  user)
-            //         .then(resp => {
-            //             const resData = resp.data;
-            //             const token = resData.token;
-            //             const user = resData.user;
-            //             localStorage.setItem('token', token);
-            //             axiosInstance.defaults.headers.common['Authorization'] = token;
-            //             commit('auth_success', token, user);
-            //             resolve(resp)
-            //         })
-            //         .catch(err => {
-            //             commit('auth_error');
-            //             localStorage.removeItem('token');
-            //             reject(err)                    
-            //         })                   
-            // })
+            return new Promise((resolve, reject) => {
+                commit('auth_request');
+                axiosInstance.post("/users/signIn",  user)
+                    .then(resp => {
+                        let resData = resp.data;
+                        // let token = resData.data.token;
+                        // let user = resData.data.user;
+                        localStorage.setItem('token', resData.data.token);
+                        axiosInstance.defaults.headers.common['Authorization'] = resData.data.token;
+                        commit('auth_success', resData.data.token,  resData.data.user);     
+                        resolve(resp)
+                    })
+                    .catch(err => {
+                        if(err.response.status === 401){
+                            commit('unauth')
+                        }else
+                            commit('auth_error');
+                        localStorage.removeItem('token');
+                        reject(err)                    
+                    })                   
+            })
         },
 
         register({commit}, user) {
@@ -78,11 +84,12 @@ export default new Vuex.Store({
                 commit('auth_request')
                 axiosInstance.post("/users/signUp", user)
                     .then(resp => {
-                        const token = resp.data.token
-                        const user = resp.data.user
-                        localStorage.setItem('token', token)
-                        axiosInstance.defaults.headers.common['Authorization'] = token
-                        commit('auth_success', token, user)
+                        let resData = resp.data;
+                        // const token = resp.data.token
+                        // const user = resp.data.user
+                        // localStorage.setItem('token', resData.data.token)
+                        // axiosInstance.defaults.headers.common['Authorization'] = resData.data.token
+                        // commit('auth_success', resData.data.token, resData.data.user)
                         resolve(resp)
                     })
                     .catch(err => {
@@ -97,7 +104,7 @@ export default new Vuex.Store({
             return new Promise((resolve, reject) => {
                 commit('logout')
                 localStorage.removeItem('token')
-                delete axios.defaults.headers.common['Authorization']
+                delete axiosInstance.defaults.headers.common['Authorization']
                 resolve()
             })
         }

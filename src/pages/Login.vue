@@ -10,10 +10,10 @@
 
 <script>
 import LoginForm from "../pages/Login/LoginForm";
-
+// import fb from '../components/FacebookLogin/Button'
 export default {
   components: {
-    LoginForm,
+    LoginForm
   },
 };
 </script>

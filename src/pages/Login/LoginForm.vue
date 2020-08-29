@@ -50,7 +50,7 @@
         </md-card-content>
 
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
-
+          <facebook-login-button ></facebook-login-button>
         <md-card-actions>
           <md-button type="submit" class="md-primary" :disabled="sending"
             >Login</md-button
@@ -64,8 +64,9 @@
 </template>
 
 <script>
+import FacebookLoginButton from "../../components/FacebookLogin/Button";
 import { validationMixin } from "vuelidate";
-import { mapState } from "vuex";
+import { mapState } from "vuex"; 
 import {
   required,
   password,
@@ -75,6 +76,9 @@ import {
 
 export default {
   name: "LoginForm",
+  components:{
+    FacebookLoginButton
+  },
   mixins: [validationMixin],
   data() {
     return {

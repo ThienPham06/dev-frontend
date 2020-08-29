@@ -2,16 +2,23 @@
   <div>
     <md-table v-model="users" :table-header-color="tableHeaderColor">
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Country">{{ item.country }}</md-table-cell>
-        <md-table-cell md-label="City">{{ item.city }}</md-table-cell>
-        <md-table-cell md-label="Salary">{{ item.salary }}</md-table-cell>
+        <md-table-cell md-label="Product">{{ item.product_name }}</md-table-cell>
+        <md-table-cell md-label="Import Price">{{ item.import_price }}</md-table-cell>
+        <md-table-cell md-label="Sell Price">{{ item.sell_price }}</md-table-cell>
+        <md-table-cell md-label="Actions">
+          <div>
+          <md-button class="md-raised md-primary">Edit</md-button>
+          <md-button class="md-raised md-accent">Delete</md-button>
+          </div>
+        </md-table-cell>
       </md-table-row>
     </md-table>
   </div>
 </template>
 
 <script>
+import axiosInstance from '../../configs/http-commons';
+import axios from "axios";
 export default {
   name: "simple-table",
   props: {
@@ -23,45 +30,17 @@ export default {
   data() {
     return {
       selected: [],
-      users: [
-        {
-          name: "Dakota Rice",
-          salary: "$36,738",
-          country: "Niger",
-          city: "Oud-Turnhout"
-        },
-        {
-          name: "Minerva Hooper",
-          salary: "$23,738",
-          country: "Curaçao",
-          city: "Sinaai-Waas"
-        },
-        {
-          name: "Sage Rodriguez",
-          salary: "$56,142",
-          country: "Netherlands",
-          city: "Overland Park"
-        },
-        {
-          name: "Philip Chaney",
-          salary: "$38,735",
-          country: "Korea, South",
-          city: "Gloucester"
-        },
-        {
-          name: "Doris Greene",
-          salary: "$63,542",
-          country: "Malawi",
-          city: "Feldkirchen in Kārnten"
-        },
-        {
-          name: "Mason Porter",
-          salary: "$78,615",
-          country: "Chile",
-          city: "Gloucester"
-        }
-      ]
+      users: []  
     };
+  },
+  mounted() {
+    axios.get("https://5f43d67f75bded001695e586.mockapi.io/api/products")
+      .then(resp => {
+          this.users = resp.data
+      })
+      .catch(err => {
+          console.log(err)
+      })
   }
 };
 </script>

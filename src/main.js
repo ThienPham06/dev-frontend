@@ -60,6 +60,7 @@ router.beforeEach((to, from, next) => {
 });
 
 Vue.prototype.$Chartist = Chartist;
+Vue.prototype.$store = store
 
 Vue.use(VueRouter);
 Vue.use(MaterialDashboard);

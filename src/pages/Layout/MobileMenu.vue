@@ -8,14 +8,14 @@
     </li>
     <li>
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="material-icons">dashboard</i>
+        <em class="material-icons">dashboard</em>
         <p>Dashboard</p></a
       >
     </li>
     <li>
       <drop-down>
         <a slot="title" class="dropdown-toggle" data-toggle="dropdown">
-          <i class="material-icons">notifications</i>
+          <em class="material-icons">notifications</em>
           <span class="notification">5</span>
           <p>Notifications</p>
         </a>
@@ -30,7 +30,7 @@
     </li>
     <li>
       <a href="#" data-toggle="dropdown" class="dropdown-toggle"
-        ><i class="material-icons">person</i>
+        ><em class="material-icons">person</em>
         <p>Profile</p></a
       >
     </li>

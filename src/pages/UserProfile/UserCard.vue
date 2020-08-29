@@ -1,7 +1,7 @@
 <template>
   <md-card class="md-card-profile">
     <div class="md-card-avatar">
-      <img class="img" :src="cardUserImage" />
+      <img alt="User Image" class="img" :src="cardUserImage" />
     </div>
 
     <md-card-content>
@@ -38,4 +38,3 @@ export default {
   }
 };
 </script>
-<style></style>

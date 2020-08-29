@@ -111,7 +111,6 @@
         <router-link to="/">Or login with your account</router-link>
 
       </md-card>
-      <!-- <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar> -->
     </form>
   </div>
 </template>
@@ -121,9 +120,7 @@ import { validationMixin } from "vuelidate";
 import {
   required,
   email,
-  password,
   minLength,
-  maxLength,
   sameAs,
 } from "vuelidate/lib/validators";
 

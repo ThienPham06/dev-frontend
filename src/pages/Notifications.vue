@@ -6,7 +6,7 @@
           <md-card-header data-background-color="green">
             <h4 class="title">Notifications</h4>
             <p class="category">
-              Handcrafted by us with <i class="fa fa-heart heart"></i>
+              Handcrafted by us with <em class="fa fa-heart heart"></em>
             </p>
           </md-card-header>
           <md-card-content>
@@ -29,7 +29,7 @@
                   <button type="button" aria-hidden="true" class="close">
                     ×
                   </button>
-                  <i data-notify="icon" class="material-icons">add_alert</i>
+                  <em data-notify="icon" class="material-icons">add_alert</em>
                   <span data-notify="message"
                     >This is a notification with close button and icon.</span
                   >
@@ -41,7 +41,7 @@
                   <button type="button" aria-hidden="true" class="close">
                     ×
                   </button>
-                  <i data-notify="icon" class="material-icons">add_alert</i>
+                  <em data-notify="icon" class="material-icons">add_alert</em>
                   <span data-notify="message"
                     >This is a notification with close button and icon and have
                     many lines. You can see that the icon and the close button
@@ -58,7 +58,7 @@
                     ×
                   </button>
                   <span
-                    ><b> Info - </b> This is a regular notification made with
+                    ><strong> Info - </strong> This is a regular notification made with
                     ".alert-info"</span
                   >
                 </div>
@@ -67,7 +67,7 @@
                     ×
                   </button>
                   <span
-                    ><b> Success - </b> This is a regular notification made with
+                    ><strong> Success - </strong> This is a regular notification made with
                     ".alert-success"</span
                   >
                 </div>
@@ -76,7 +76,7 @@
                     ×
                   </button>
                   <span
-                    ><b> Warning - </b> This is a regular notification made with
+                    ><strong> Warning - </strong> This is a regular notification made with
                     ".alert-warning"</span
                   >
                 </div>
@@ -85,7 +85,7 @@
                     ×
                   </button>
                   <span
-                    ><b> Danger - </b> This is a regular notification made with
+                    ><strong> Danger - </strong> This is a regular notification made with
                     ".alert-danger"</span
                   >
                 </div>
@@ -94,7 +94,7 @@
                     ×
                   </button>
                   <span
-                    ><b> Primary - </b> This is a regular notification made with
+                    ><strong> Primary - </strong> This is a regular notification made with
                     ".alert-primary"</span
                   >
                 </div>
@@ -158,7 +158,7 @@ export default {
   },
   methods: {
     notifyVue(verticalAlign, horizontalAlign) {
-      var color = Math.floor(Math.random() * 4 + 1);
+      var color = 5;
       this.$notify({
         message:
           "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer.",

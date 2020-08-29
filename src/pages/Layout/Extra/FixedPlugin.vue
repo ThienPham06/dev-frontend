@@ -2,7 +2,7 @@
   <div class="fixed-plugin" v-click-outside="closeDropDown">
     <div class="dropdown show-dropdown" :class="{ show: isOpen }">
       <a data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x" @click="toggleDropDown"> </i>
+        <em class="fa fa-cog fa-2x" @click="toggleDropDown"> </em>
       </a>
       <ul class="dropdown-menu" :class="{ show: isOpen }">
         <li class="header-title">Sidebar Filters</li>
@@ -68,13 +68,13 @@
                 network="facebook"
                 class="md-button md-round md-just-icon md-facebook"
               >
-                <i class="fab fa-facebook-f"></i>
+                <em class="fab fa-facebook-f"></em>
               </network>
               <network
                 network="twitter"
                 class="md-button md-round md-just-icon md-twitter"
               >
-                <i class="fab fa-twitter"></i>
+                <em class="fab fa-twitter"></em>
               </network>
             </div>
           </social-sharing>

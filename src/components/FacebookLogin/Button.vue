@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <button class="button" @click="logInWithFacebook"> Login with Facebook</button> -->
     <button class="buttonFacebook" @click="facebookAuthentication">
       Login with Facebook</button>
   </div>
@@ -9,7 +8,9 @@
 export default {
   name: "FacebookLoginButton",
   data() {
-    facebookId: ""
+    return {
+      
+    }
   },
   methods: {
     async facebookAuthentication() {

@@ -13,12 +13,12 @@
 
           <md-card-content>
             <div class="table-responsive table-upgrade">
-              <table class="table" cellspacing="0">
+              <table summary="Table" class="table">
                 <thead>
                   <tr>
-                    <th></th>
-                    <th class="text-center">Free</th>
-                    <th class="text-center">PRO</th>
+                    <th id="id"></th>
+                    <th id="free" class="text-center">Free</th>
+                    <th id="pro" class="text-center">PRO</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,10 +40,10 @@
                   <tr>
                     <td>Login, Register, Pricing, Lock Pages</td>
                     <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
+                      <em class="fa fa-times text-danger"></em>
                     </td>
                     <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
+                      <em class="fa fa-check text-success"></em>
                     </td>
                   </tr>
                   <tr>
@@ -52,28 +52,28 @@
                       jQueryValidation, FullCalendar etc...
                     </td>
                     <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
+                      <em class="fa fa-times text-danger"></em>
                     </td>
                     <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
+                      <em class="fa fa-check text-success"></em>
                     </td>
                   </tr>
                   <tr>
                     <td>Mini Sidebar</td>
                     <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
+                      <em class="fa fa-times text-danger"></em>
                     </td>
                     <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
+                      <em class="fa fa-check text-success"></em>
                     </td>
                   </tr>
                   <tr>
                     <td>Premium Support</td>
                     <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
+                      <em class="fa fa-times text-danger"></em>
                     </td>
                     <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
+                      <em class="fa fa-check text-success"></em>
                     </td>
                   </tr>
                   <tr>

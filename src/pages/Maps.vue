@@ -4,7 +4,7 @@
 
 <script>
 import { API_KEY } from "./API_KEY";
-import {Loader, LoaderOptions} from 'google-maps';
+import {Loader} from 'google-maps';
 
 const loader = new Loader(API_KEY);
 export default {

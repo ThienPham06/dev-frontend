@@ -7,7 +7,7 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      
+
       <sidebar-link to="/layout/dashboard">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
@@ -36,22 +36,20 @@
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/layout/upgrade" class="active-pro">
-        <md-icon>unarchive</md-icon>
-        <p>Upgrade to PRO</p>
+      <div v-on:click="logout">
+      <sidebar-link to="/" class="active-pro">
+        <md-icon >logout</md-icon>
+        <p>Logout</p>
       </sidebar-link>
+      </div>
     </side-bar>
 
     <div class="main-panel">
       <top-navbar></top-navbar>
 
-      <fixed-plugin
-        :color.sync="sidebarBackground"
-        :image.sync="sidebarBackgroundImage"
-      >
-      </fixed-plugin>
+      <fixed-plugin :color.sync="sidebarBackground" :image.sync="sidebarBackgroundImage"></fixed-plugin>
 
-      <dashboard-content> </dashboard-content>
+      <dashboard-content></dashboard-content>
 
       <content-footer v-if="!$route.meta.hideFooter"></content-footer>
     </div>
@@ -78,6 +76,11 @@ export default {
       sidebarBackground: "green",
       sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg")
     };
+  },
+  methods: {
+    logout: function() {
+      this.$store.dispatch('logout')
+    }
   }
 };
 </script>

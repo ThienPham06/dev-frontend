@@ -1,5 +1,5 @@
 <template>
-  <li class="md-list-item">
+  <ul><li class="md-list-item">
     <router-link
       class="md-list-item-router md-list-item-container md-button-clean"
       @click="hideSidebar"
@@ -12,7 +12,7 @@
         </slot>
       </div>
     </router-link>
-  </li>
+  </li></ul>
 </template>
 <script>
 export default {
@@ -50,4 +50,3 @@ export default {
   }
 };
 </script>
-<style></style>

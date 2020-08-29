@@ -17,7 +17,7 @@
     >
       ×
     </button>
-    <i data-notify="icon" class="material-icons">{{ icon }}</i>
+    <em data-notify="icon" class="material-icons">{{ icon }}</em>
     <span data-notify="message" v-html="message"></span>
   </div>
 </template>
@@ -122,7 +122,6 @@ export default {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin: 0 auto;
   }
   &.left {
     left: 20px;

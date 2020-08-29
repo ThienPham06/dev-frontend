@@ -30,14 +30,14 @@ const routes = [
       {
         path: "/layout",
         name: "Layout",
-        // meta: {
-        //   requiresAuth: true
-        // },
+        meta: {
+          requiresAuth: true
+        },
         component: DashboardLayout,
         children:[
           {
             path: "dashboard",
-            name: "Dashboard",
+            name: "Dashboard",           
             component: Dashboard
           },
           {

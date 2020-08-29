@@ -58,7 +58,6 @@
         </md-card-actions>
         <router-link to="/register">Or sign up a new account...</router-link>
       </md-card>
-      <!-- <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar> -->
     </form>
   </div>
 </template>
@@ -69,9 +68,7 @@ import { validationMixin } from "vuelidate";
 import { mapState } from "vuex"; 
 import {
   required,
-  password,
-  minLength,
-  maxLength,
+  minLength
 } from "vuelidate/lib/validators";
 
 export default {
@@ -132,11 +129,11 @@ export default {
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
-        let x = this.form.userName;
-        let y = this.form.passWord;
+        let i_username = this.form.userName;
+        let i_password = this.form.passWord;
 
         this.$store
-          .dispatch("login", { username: x, password: y })
+          .dispatch("login", { username: i_username, password: i_password })
           .then(() => {
             this.$router.push("/layout/dashboard");
           })

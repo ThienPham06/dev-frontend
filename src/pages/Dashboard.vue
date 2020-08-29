@@ -14,7 +14,7 @@
             <h4 class="title">Daily Sales</h4>
             <p class="category">
               <span class="text-success"
-                ><i class="fas fa-long-arrow-alt-up"></i> 55%
+                ><em class="fas fa-long-arrow-alt-up"></em> 55%
               </span>
               increase in today sales.
             </p>
@@ -148,7 +148,7 @@
       >
         <stats-card data-background-color="blue">
           <template slot="header">
-            <i class="fab fa-twitter"></i>
+            <em class="fab fa-twitter"></em>
           </template>
 
           <template slot="content">

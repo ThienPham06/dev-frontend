@@ -48,8 +48,6 @@
             >
           </md-field>
         </md-card-content>
-
-        <md-progress-bar md-mode="indeterminate" v-if="sending" />
           <facebook-login-button ></facebook-login-button>
         <md-card-actions>
           <md-button type="submit" class="md-primary" :disabled="sending"
@@ -59,6 +57,7 @@
         <router-link to="/register">Or sign up a new account...</router-link>
       </md-card>
     </form>
+    <md-progress-spinner md-mode="indeterminate" v-if="sending" />
   </div>
 </template>
 
@@ -127,17 +126,18 @@ export default {
     },
     login: function() {
       this.$v.$touch();
-
       if (!this.$v.$invalid) {
+        this.sending = !this.sending;
         let i_username = this.form.userName;
         let i_password = this.form.passWord;
-
         this.$store
           .dispatch("login", { username: i_username, password: i_password })
           .then(() => {
+            this.sending = false;
             this.$router.push("/layout/dashboard");
           })
           .catch((err) => {
+            this.sending = false;
             console.log(err);
           });
       }
@@ -146,11 +146,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.md-progress-bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
+.md-progress-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
 }
 .md-card {
   position: fixed;
@@ -162,4 +164,5 @@ export default {
 .md-error {
   color: red;
 }
+
 </style>

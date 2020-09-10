@@ -10,7 +10,7 @@
             <p class="category">All availabe products</p>
           </md-card-header>
           <md-card-content>
-            <simple-table table-header-color="green"></simple-table>
+            <product-table table-header-color="green"></product-table>
           </md-card-content>
         </md-card>
       </div>
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import { SimpleTable, OrderedTable } from "@/components";
+import { ProductTable, OrderedTable } from "@/components";
 
 export default {
   components: {
     OrderedTable,
-    SimpleTable
+    ProductTable
   }
 };
 </script>

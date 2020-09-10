@@ -18,7 +18,7 @@
       </sidebar-link>
       <sidebar-link to="/layout/table">
         <md-icon>content_paste</md-icon>
-        <p>Table list</p>
+        <p>Products</p>
       </sidebar-link>
       <sidebar-link to="/layout/typography">
         <md-icon>library_books</md-icon>
